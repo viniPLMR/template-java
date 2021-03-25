@@ -1,0 +1,39 @@
+# Java Build
+# Build definition to validate and build it2-java-api project
+# To customize your build add steps to this file and update the values
+# reference: https://docs.microsoft.com/en-us/azure/devops/pipelines/ecosystems/java?view=azure-devops
+
+trigger:
+- master
+- develop
+
+pool:
+  name: squads-internos
+
+steps:
+
+- task: Maven@2
+  displayName: Clean
+  inputs:
+    goals: clean
+    publishJUnitResults: false
+
+- task: Maven@2
+  displayName: Package
+  inputs:
+    mavenPomFile: 'pom.xml'
+    publishJUnitResults: true
+    testResultsFiles: '**/TEST-*.xml'
+    goals: 'package'
+
+- task: PublishTestResults@2
+  displayName: 'Publish Tests Results: test.xml'
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: '**/TEST-*.xml'
+
+- task: Maven@2
+  displayName: Sonar
+  inputs:
+    goals: sonar:sonar
+    publishJUnitResults: false
