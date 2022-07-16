@@ -12,16 +12,9 @@
 	<groupId>br.com.it2.api.java</groupId>
 	<artifactId>it2-java-api</artifactId>
 	<version>1.0.0</version>
-	<name>it2-java-api</name>
-	<description>Demo project for Spring Boot</description>
+	<name>example-specification-and-reflections</name>
+	<description>Project for example of specification and reflections java</description>
 
-	<properties>
-		<java.version>1.8</java.version>
-		<!-- Sonar properties -->
-		<sonar.host.url>http://sonarq.iteris.com.br</sonar.host.url>
-		<sonar.projectKey>it2-api-java</sonar.projectKey>
-		<sonar.login>32bdfffe80edf746b542975bc236b4cb359ac513</sonar.login>
-	</properties>
 
 	<dependencies>
 		<dependency>
